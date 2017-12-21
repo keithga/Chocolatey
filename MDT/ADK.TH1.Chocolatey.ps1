@@ -13,8 +13,8 @@ $ChocoPackage = @{
 
 $COmmonArgs = '/quiet /norestart /log $env:temp\win_adk.log'
 
-& $PSSCriptRoot\Create-ChocolateyExePackage.ps1 -Path $PSSCriptRoot\build\th1 @ChocoPackage -ID 'windows-adk' -Features 'default' -args "$CommonArgs"
-& $PSSCriptRoot\Create-ChocolateyExePackage.ps1 -Path $PSSCriptRoot\build\th1 @ChocoPackage -ID 'windows-adk-all' -Features 'all' -args "$CommonArgs /features +"
-& $PSSCriptRoot\Create-ChocolateyExePackage.ps1 -Path $PSSCriptRoot\build\th1 @ChocoPackage -ID 'windows-adk-winpe' -Features 'winpe' -args "$CommonArgs /features OptionId.DeploymentTools OptionId.WindowsPreinstallationEnvironment"
-& $PSSCriptRoot\Create-ChocolateyExePackage.ps1 -Path $PSSCriptRoot\build\th1 @ChocoPackage -ID 'windows-adk-deploy' -Features 'common deployment' -args "$CommonArgs /features OptionId.DeploymentTools OptionId.WindowsPreinstallationEnvironment OptionId.ImagingAndConfigurationDesigner OptionId.UserStateMigrationTool"
+& $PSScriptRoot\..\Common\Create-ChocolateyExePackage.ps1 -Path $PSSCriptRoot\build\th1 @ChocoPackage -ID 'windows-adk' -Features 'default' -args "$CommonArgs"
+& $PSScriptRoot\..\Common\Create-ChocolateyExePackage.ps1 -Path $PSSCriptRoot\build\th1 @ChocoPackage -ID 'windows-adk-all' -Features 'all' -args "$CommonArgs /features +"
+& $PSScriptRoot\..\Common\Create-ChocolateyExePackage.ps1 -Path $PSSCriptRoot\build\th1 @ChocoPackage -ID 'windows-adk-winpe' -Features 'winpe' -args "$CommonArgs /features OptionId.DeploymentTools OptionId.WindowsPreinstallationEnvironment"
+& $PSScriptRoot\..\Common\Create-ChocolateyExePackage.ps1 -Path $PSSCriptRoot\build\th1 @ChocoPackage -ID 'windows-adk-deploy' -Features 'common deployment' -args "$CommonArgs /features OptionId.DeploymentTools OptionId.WindowsPreinstallationEnvironment OptionId.ImagingAndConfigurationDesigner OptionId.UserStateMigrationTool"
 

@@ -12,4 +12,4 @@ $ChocoPackage = @{
     url64bit = 'http://download.microsoft.com/download/E/0/3/E0337D5A-8918-45D0-91DB-EAF6C0973248/kmdf-1.11-Win-6.1-x64.msu'
 }
 
-& $PSScriptRoot\Create-ChocolateyMSUPackage.ps1 -Path $PSScriptRoot\Build\KMDF @ChocoPackage
+& $PSScriptRoot\..\Common\Create-ChocolateyMSUPackage.ps1 -Path $PSScriptRoot\Build\KMDF @ChocoPackage

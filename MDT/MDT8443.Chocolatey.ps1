@@ -12,4 +12,4 @@ $ChocoPackage = @{
     url64bit = 'https://download.microsoft.com/download/3/3/9/339BE62D-B4B8-4956-B58D-73C4685FC492/MicrosoftDeploymentToolkit_x64.msi'
 }
 
-& $PSScriptRoot\Create-ChocolateyMSIPackage.ps1 -Path $PSScriptRoot\Build\MDTu1 @ChocoPackage
+& $PSScriptRoot\..\Common\Create-ChocolateyMSIPackage.ps1 -Path $PSScriptRoot\Build\MDTu1 @ChocoPackage
