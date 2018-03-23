@@ -79,7 +79,7 @@ function Get-MSIProperties ( $Path )
         (New-Object System.Net.WebClient).DownloadFile($url, $localfilex86)
         $filex86crc = Get-FileHash -Path $localfilex86 -Algorithm MD5 | select-object -ExpandProperty hash
         $x86uninstall = (Get-msiProperties -Path $localfilex86).ProductCode
-        while ( Test-path $localfilex86 ) { Start-Sleep 1; Remove-Item -Force $localfilex86 -ErrorAction SilentlyContinue; write-verbose "delete..."}
+        #while ( Test-path $localfilex86 ) { Start-Sleep 1; Remove-Item -Force $localfilex86 -ErrorAction SilentlyContinue; write-verbose "delete..."}
     }
 
     if ( $url64bit ) 
@@ -88,7 +88,7 @@ function Get-MSIProperties ( $Path )
         (New-Object System.Net.WebClient).DownloadFile($url64bit, $localfilex64)
         $filex64crc = Get-FileHash -Path $localfilex64 -Algorithm MD5 | select-object -ExpandProperty hash
         $x64uninstall = (Get-msiProperties -Path $localfilex64).ProductCode
-        while ( Test-path $localfilex64 ) { Start-Sleep 1; Remove-Item -Force $localfilex64 -ErrorAction SilentlyContinue; write-verbose "delete..."}
+        #while ( Test-path $localfilex64 ) { Start-Sleep 1; Remove-Item -Force $localfilex64 -ErrorAction SilentlyContinue; write-verbose "delete..."}
     }
 
 #endregion
