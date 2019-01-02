@@ -41,6 +41,8 @@ param(
        [Parameter(Mandatory=$false)]
        [string] $Args,
 
+       [string] $Dependency,
+
        [Parameter(Mandatory=$false)]
        [string] $Features = "default"
 
@@ -83,6 +85,9 @@ param(
     <iconUrl>https://raw.github.com/keithga/Chocolatey/master/Resources/win_logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <releaseNotes></releaseNotes>
+$( if ($Dependency) {
+    "<dependencies><dependency $Dependency /></dependencies>"
+} )
   </metadata>
 </package>
 "@ | Out-File -FilePath "$Path\$ID\$($ID).nuspec" -Encoding utf8
@@ -137,23 +142,25 @@ Uninstalls the $PackageName using the Chocolatey framework
 $friendlyURL
 #>
 
-`$Key = @( 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*',
+`$Keys = @( 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*',
           'HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*',
           'HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*' ) |
    Get-ItemProperty -ErrorAction SilentlyContinue | 
    where-object DisplayName -match '$PackageName'
 
-`$Key | Out-String | Write-Verbose
+`$Keys | Out-String | Write-Verbose
 
-`$ChocoPackage = @{
-    SilentArgs = '/uninstall /quiet'
-    packageName = '$PackageName'
-    fileType = 'exe'
-    file = `$key.BundleCachePath
-    validExitCodes = @(0,3010)
+foreach ( `$Key in `$Keys ) {
+    `$ChocoPackage = @{
+        SilentArgs = '/uninstall /quiet'
+        packageName = '$PackageName'
+        fileType = 'exe'
+        file = `$key.BundleCachePath
+        validExitCodes = @(0,3010)
+    }
+
+    Uninstall-ChocolateyPackage @ChocoPackage
 }
-
-Uninstall-ChocolateyPackage @ChocoPackage
 
 "@ | Out-File -FilePath "$Path\$ID\tools\chocolateyuninstall.ps1" -Encoding utf8
 
