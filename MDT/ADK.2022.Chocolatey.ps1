@@ -3,8 +3,10 @@ param(
     $Version = '2022'
 )
 
+$CommonArgs = '/quiet /norestart /log $env:temp\winPE_adk.log'
+
 $ChocoPackagePE = @{
-    Version = '10.1.22000.1'
+    Version = '10.1.22000.2'
     Tags = 'ADK Winpe WAIK'
     packageName = 'WinPE add-on for the Windows Assessment and Deployment Kit'
     friendlyUrl = 'https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install'
@@ -12,13 +14,12 @@ $ChocoPackagePE = @{
     url = 'https://go.microsoft.com/fwlink/?linkid=2166133'
 }
 
-
-& $PSScriptRoot\..\Common\Create-ChocolateyExePackage.ps1 -Path $PSSCriptRoot\build\$Version @ChocoPackagePE -ID 'windows-adk-winpe' -Features 'winpe' -args "/quiet /norestart /log $env:temp\winPE_adk.log /features +"
+& $PSScriptRoot\..\Common\Create-ChocolateyExePackage.ps1 -Path $PSSCriptRoot\build\$Version @ChocoPackagePE -ID 'windows-adk-winpe' -Features 'winpe' -args "$CommonArgs /features +"
 
 $CommonArgs = '/quiet /norestart /log $env:temp\win_adk.log'
 
 $ChocoPackageADK = @{
-    Version = '10.1.22000.1'
+    Version = '10.1.22000.2'
     Tags = 'ADK Winpe WAIK USMT'
     packageName = 'Windows Assessment and Deployment Kit'
     friendlyUrl = 'https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install'
