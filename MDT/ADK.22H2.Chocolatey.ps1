@@ -11,7 +11,6 @@ $ChocoPackagePE = @{
     packageName = 'WinPE add-on for the Windows Assessment and Deployment Kit'
     friendlyUrl = 'https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install'
     Summary = 'The Windows Assessment and Deployment Kit (Windows ADK) is a collection of tools that you can use to customize, assess, and deploy Windows operating systems to new computers. Installs WinPE ONLY!'
-    url = 'https://go.microsoft.com/fwlink/?linkid=2196224'
     url = 'https://go.microsoft.com/fwlink/?linkid=2243391'
 }
 
