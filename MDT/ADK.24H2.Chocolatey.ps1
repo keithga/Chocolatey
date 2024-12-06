@@ -6,12 +6,12 @@ param(
 $CommonArgs = '/quiet /norestart /log $env:temp\winPE_adk.log'
 
 $ChocoPackagePE = @{
-    Version = '10.1.26100.1'
+    Version = '10.1.26100.2454'
     Tags = 'ADK Winpe WAIK'
     packageName = 'WinPE add-on for the Windows Assessment and Deployment Kit'
     friendlyUrl = 'https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install'
     Summary = 'The Windows Assessment and Deployment Kit (Windows ADK) is a collection of tools that you can use to customize, assess, and deploy Windows operating systems to new computers. Installs WinPE ONLY!'
-    url = 'https://go.microsoft.com/fwlink/?linkid=2271338'
+    url = 'https://go.microsoft.com/fwlink/?linkid=2289981'
 }
 
 & $PSScriptRoot\..\Common\Create-ChocolateyExePackage.ps1 -Path $PSSCriptRoot\build\$Version @ChocoPackagePE -ID 'windows-adk-winpe' -Features 'winpe' -args "$CommonArgs /features +"
@@ -19,12 +19,12 @@ $ChocoPackagePE = @{
 $CommonArgs = '/quiet /norestart /log $env:temp\win_adk.log'
 
 $ChocoPackageADK = @{
-    Version = '10.1.26100.1'
+    Version = '10.1.26100.2454'
     Tags = 'ADK Winpe WAIK USMT'
     packageName = 'Windows Assessment and Deployment Kit'
     friendlyUrl = 'https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install'
     Summary = 'The Windows Assessment and Deployment Kit (Windows ADK) is a collection of tools that you can use to customize, assess, and deploy Windows operating systems to new computers.'
-    url = 'https://go.microsoft.com/fwlink/?linkid=2271337'
+    url = 'https://go.microsoft.com/fwlink/?linkid=2289980'
 }
 
 & $PSScriptRoot\..\Common\Create-ChocolateyExePackage.ps1 -Path $PSSCriptRoot\build\$Version @ChocoPackageADK -ID 'windows-adk' -Features 'default' -args "$CommonArgs"
