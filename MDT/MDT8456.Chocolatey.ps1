@@ -3,7 +3,7 @@ param()
 
 $ChocoPackage = @{
     ID = 'MDT'
-    Version = '6.3.8456.1'
+    Version = '6.3.8456.3'
     Tags = 'MDT ADK Winpe WAIK BDD MDT2012 MDT2013 MDT2013U1 MDT8450'
     packageName = 'Microsoft Deployment Toolkit Build 8456'
     friendlyUrl = 'https://www.microsoft.com/en-us/download/details.aspx?id=54259'
